@@ -65,6 +65,11 @@ import InvoiceSettings from "./pages/settings/InvoiceSettings";
 import RolesSettings from "./pages/settings/RolesSettings";
 import BackupSettings from "./pages/settings/BackupSettings";
 
+// Auth
+import OwnerLogin from "./pages/auth/OwnerLogin";
+import OwnerRegister from "./pages/auth/OwnerRegister";
+import StaffLogin from "./pages/auth/StaffLogin";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -136,6 +141,12 @@ const App = () => (
             <Route path="/settings/roles" element={<RolesSettings />} />
             <Route path="/settings/backup" element={<BackupSettings />} />
           </Route>
+
+          {/* Auth Routes (outside MainLayout) */}
+          <Route path="/auth/owner/login" element={<OwnerLogin />} />
+          <Route path="/auth/owner/register" element={<OwnerRegister />} />
+          <Route path="/auth/staff/login" element={<StaffLogin />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

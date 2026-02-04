@@ -1,4 +1,4 @@
-import { Bell, Search, User, Menu, ChevronDown, Building2 } from "lucide-react";
+import { Bell, Search, User, Menu, ChevronDown, Building2, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 interface TopNavbarProps {
   onMenuClick: () => void;
@@ -116,7 +117,12 @@ export function TopNavbar({ onMenuClick, isCollapsed }: TopNavbarProps) {
             <DropdownMenuItem>Change Password</DropdownMenuItem>
             <DropdownMenuItem>Activity Log</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-destructive">Sign Out</DropdownMenuItem>
+            <DropdownMenuItem asChild className="text-destructive">
+              <Link to="/auth/owner/login" className="flex items-center gap-2">
+                <LogOut className="h-4 w-4" />
+                Sign Out
+              </Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

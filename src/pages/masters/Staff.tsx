@@ -27,11 +27,11 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const staffData = [
-  { id: 1, name: "Admin User", email: "admin@stockpro.com", role: "Administrator", status: "active" },
-  { id: 2, name: "Rahul Kumar", email: "rahul@stockpro.com", role: "Manager", status: "active" },
-  { id: 3, name: "Priya Singh", email: "priya@stockpro.com", role: "Sales Staff", status: "active" },
-  { id: 4, name: "Amit Patel", email: "amit@stockpro.com", role: "Accountant", status: "active" },
-  { id: 5, name: "Vikram Sharma", email: "vikram@stockpro.com", role: "Sales Staff", status: "inactive" },
+  { id: 1, name: "Admin User", email: "admin@stockpro.com", role: "Owner", userType: "owner", status: "active" },
+  { id: 2, name: "Rahul Kumar", email: "rahul@stockpro.com", role: "Manager", userType: "staff", status: "active" },
+  { id: 3, name: "Priya Singh", email: "priya@stockpro.com", role: "Sales Staff", userType: "staff", status: "active" },
+  { id: 4, name: "Amit Patel", email: "amit@stockpro.com", role: "Accountant", userType: "staff", status: "active" },
+  { id: 5, name: "Vikram Sharma", email: "vikram@stockpro.com", role: "Sales Staff", userType: "staff", status: "inactive" },
 ];
 
 const getInitials = (name: string) => {
@@ -40,7 +40,7 @@ const getInitials = (name: string) => {
 
 const getRoleBadgeColor = (role: string) => {
   switch (role) {
-    case "Administrator":
+    case "Owner":
       return "bg-destructive/10 text-destructive";
     case "Manager":
       return "bg-accent/10 text-accent";
@@ -49,6 +49,12 @@ const getRoleBadgeColor = (role: string) => {
     default:
       return "bg-muted text-muted-foreground";
   }
+};
+
+const getUserTypeBadge = (userType: string) => {
+  return userType === "owner" 
+    ? "bg-warning/10 text-warning border-warning/20" 
+    : "bg-muted text-muted-foreground";
 };
 
 const Staff = () => {
@@ -121,6 +127,7 @@ const Staff = () => {
             <tr>
               <th>Staff Member</th>
               <th>Email</th>
+              <th>Type</th>
               <th>Role</th>
               <th>Status</th>
               <th className="w-12"></th>
@@ -140,6 +147,11 @@ const Staff = () => {
                   </div>
                 </td>
                 <td className="text-muted-foreground">{staff.email}</td>
+                <td>
+                  <Badge className={`${getUserTypeBadge(staff.userType)} text-xs`}>
+                    {staff.userType}
+                  </Badge>
+                </td>
                 <td>
                   <Badge className={`${getRoleBadgeColor(staff.role)} border-0`}>
                     {staff.role}
