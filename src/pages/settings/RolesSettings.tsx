@@ -17,27 +17,35 @@ import { Badge } from "@/components/ui/badge";
 const rolesData = [
   {
     id: 1,
-    name: "Administrator",
+    name: "Owner",
+    userType: "owner",
     users: 1,
-    permissions: { dashboard: true, products: true, sales: true, purchases: true, reports: true, settings: true },
+    description: "Full access to all features and settings",
+    permissions: { dashboard: true, products: true, sales: true, purchases: true, reports: true, settings: true, staff: true },
   },
   {
     id: 2,
     name: "Manager",
+    userType: "staff",
     users: 2,
-    permissions: { dashboard: true, products: true, sales: true, purchases: true, reports: true, settings: false },
+    description: "Can manage operations but not system settings",
+    permissions: { dashboard: true, products: true, sales: true, purchases: true, reports: true, settings: false, staff: false },
   },
   {
     id: 3,
     name: "Sales Staff",
+    userType: "staff",
     users: 3,
-    permissions: { dashboard: true, products: false, sales: true, purchases: false, reports: false, settings: false },
+    description: "Access to sales and client management",
+    permissions: { dashboard: true, products: false, sales: true, purchases: false, reports: false, settings: false, staff: false },
   },
   {
     id: 4,
     name: "Accountant",
+    userType: "staff",
     users: 1,
-    permissions: { dashboard: true, products: false, sales: true, purchases: true, reports: true, settings: false },
+    description: "Access to financial reports and payments",
+    permissions: { dashboard: true, products: false, sales: true, purchases: true, reports: true, settings: false, staff: false },
   },
 ];
 
@@ -48,6 +56,7 @@ const permissionLabels = {
   purchases: "Purchases & Dealers",
   reports: "Reports",
   settings: "Settings",
+  staff: "Staff Management",
 };
 
 const RolesSettings = () => {
@@ -99,19 +108,24 @@ const RolesSettings = () => {
           <Card key={role.id}>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-accent/10">
-                  <Shield className="h-5 w-5 text-accent" />
+                <div className={`p-2 rounded-lg ${role.userType === "owner" ? "bg-warning/10" : "bg-accent/10"}`}>
+                  <Shield className={`h-5 w-5 ${role.userType === "owner" ? "text-warning" : "text-accent"}`} />
                 </div>
                 <div>
-                  <CardTitle className="text-lg">{role.name}</CardTitle>
-                  <p className="text-sm text-muted-foreground">{role.users} users</p>
+                  <div className="flex items-center gap-2">
+                    <CardTitle className="text-lg">{role.name}</CardTitle>
+                    <Badge className={`text-xs ${role.userType === "owner" ? "bg-warning/10 text-warning border-0" : "bg-info/10 text-info border-0"}`}>
+                      {role.userType}
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{role.description}</p>
                 </div>
               </div>
               <div className="flex items-center gap-1">
                 <Button variant="ghost" size="icon">
                   <Edit className="h-4 w-4" />
                 </Button>
-                {role.name !== "Administrator" && (
+                {role.name !== "Owner" && (
                   <Button variant="ghost" size="icon" className="text-destructive">
                     <Trash2 className="h-4 w-4" />
                   </Button>
@@ -119,6 +133,7 @@ const RolesSettings = () => {
               </div>
             </CardHeader>
             <CardContent>
+              <p className="text-xs text-muted-foreground mb-3">{role.users} users assigned</p>
               <div className="grid grid-cols-2 gap-2">
                 {Object.entries(role.permissions).map(([key, value]) => (
                   <div key={key} className="flex items-center gap-2 text-sm">
