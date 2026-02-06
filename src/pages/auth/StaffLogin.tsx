@@ -48,7 +48,12 @@ const StaffLogin = () => {
               Sign In
             </Button>
           </form>
-          <div className="mt-6 text-center">
+          <div className="mt-4 text-right">
+            <Link to="/auth/forgot-password" className="text-sm text-accent hover:underline">
+              Forgot password?
+            </Link>
+          </div>
+          <div className="mt-4 text-center">
             <p className="text-sm text-muted-foreground">
               Are you an owner? <Link to="/auth/owner/login" className="text-accent hover:underline">Login here</Link>
             </p>

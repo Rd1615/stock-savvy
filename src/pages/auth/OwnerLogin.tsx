@@ -48,7 +48,12 @@ const OwnerLogin = () => {
               Sign In
             </Button>
           </form>
-          <div className="mt-6 text-center space-y-2">
+          <div className="mt-4 text-right">
+            <Link to="/auth/forgot-password" className="text-sm text-accent hover:underline">
+              Forgot password?
+            </Link>
+          </div>
+          <div className="mt-4 text-center space-y-2">
             <Link to="/auth/owner/register" className="text-sm text-accent hover:underline">
               Don't have an account? Register
             </Link>
