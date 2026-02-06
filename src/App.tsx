@@ -70,9 +70,14 @@ import OwnerLogin from "./pages/auth/OwnerLogin";
 import OwnerRegister from "./pages/auth/OwnerRegister";
 import StaffLogin from "./pages/auth/StaffLogin";
 import TwoFactorVerify from "./pages/auth/TwoFactorVerify";
+import TwoFactorSetup from "./pages/auth/TwoFactorSetup";
 import TwoFactorRecovery from "./pages/auth/TwoFactorRecovery";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import ResetPassword from "./pages/auth/ResetPassword";
+import EmailVerification from "./pages/auth/EmailVerification";
+import AccountLocked from "./pages/auth/AccountLocked";
+import SessionExpired from "./pages/auth/SessionExpired";
+import ChangePassword from "./pages/auth/ChangePassword";
 
 // Settings (additional)
 import SecuritySettings from "./pages/settings/SecuritySettings";
@@ -155,9 +160,14 @@ const App = () => (
           <Route path="/auth/owner/register" element={<OwnerRegister />} />
           <Route path="/auth/staff/login" element={<StaffLogin />} />
           <Route path="/auth/2fa/verify" element={<TwoFactorVerify />} />
+          <Route path="/auth/2fa/setup" element={<TwoFactorSetup />} />
           <Route path="/auth/2fa/recovery" element={<TwoFactorRecovery />} />
           <Route path="/auth/forgot-password" element={<ForgotPassword />} />
           <Route path="/auth/reset-password" element={<ResetPassword />} />
+          <Route path="/auth/verify-email" element={<EmailVerification />} />
+          <Route path="/auth/account-locked" element={<AccountLocked />} />
+          <Route path="/auth/session-expired" element={<SessionExpired />} />
+          <Route path="/auth/change-password" element={<ChangePassword />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

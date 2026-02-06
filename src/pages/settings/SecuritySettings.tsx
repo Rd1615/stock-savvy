@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ShieldCheck, Smartphone, Key, Copy, Download, Eye, EyeOff, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -87,9 +88,11 @@ const SecuritySettings = () => {
                     </div>
                   </div>
                 </div>
-                <Button onClick={handleEnable2FA} className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  Enable 2FA
-                </Button>
+                <Link to="/auth/2fa/setup">
+                  <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
+                    Enable 2FA
+                  </Button>
+                </Link>
               </div>
             )}
 
