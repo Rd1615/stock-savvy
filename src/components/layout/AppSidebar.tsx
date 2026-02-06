@@ -146,6 +146,7 @@ const navigation: NavItem[] = [
       { title: "Company Profile", href: "/settings/company", icon: Building },
       { title: "Invoice Format", href: "/settings/invoice", icon: Stamp },
       { title: "Roles & Permissions", href: "/settings/roles", icon: UserCog },
+      { title: "Security & 2FA", href: "/settings/security", icon: Shield },
       { title: "Backup", href: "/settings/backup", icon: Database },
     ],
   },

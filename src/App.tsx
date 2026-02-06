@@ -69,6 +69,13 @@ import BackupSettings from "./pages/settings/BackupSettings";
 import OwnerLogin from "./pages/auth/OwnerLogin";
 import OwnerRegister from "./pages/auth/OwnerRegister";
 import StaffLogin from "./pages/auth/StaffLogin";
+import TwoFactorVerify from "./pages/auth/TwoFactorVerify";
+import TwoFactorRecovery from "./pages/auth/TwoFactorRecovery";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import ResetPassword from "./pages/auth/ResetPassword";
+
+// Settings (additional)
+import SecuritySettings from "./pages/settings/SecuritySettings";
 
 const queryClient = new QueryClient();
 
@@ -140,12 +147,17 @@ const App = () => (
             <Route path="/settings/invoice" element={<InvoiceSettings />} />
             <Route path="/settings/roles" element={<RolesSettings />} />
             <Route path="/settings/backup" element={<BackupSettings />} />
+            <Route path="/settings/security" element={<SecuritySettings />} />
           </Route>
 
           {/* Auth Routes (outside MainLayout) */}
           <Route path="/auth/owner/login" element={<OwnerLogin />} />
           <Route path="/auth/owner/register" element={<OwnerRegister />} />
           <Route path="/auth/staff/login" element={<StaffLogin />} />
+          <Route path="/auth/2fa/verify" element={<TwoFactorVerify />} />
+          <Route path="/auth/2fa/recovery" element={<TwoFactorRecovery />} />
+          <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+          <Route path="/auth/reset-password" element={<ResetPassword />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
